@@ -15,7 +15,7 @@ jobs:
             - name: Lint Code
               run: |
                 echo "Linting Start..."
-                npm init @eslint/config
+                npm init @eslint/config@latest
                 npm run lint            
             - name: Linting Completed
               run: echo "Linting Completed..."
