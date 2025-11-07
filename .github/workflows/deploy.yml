@@ -1,0 +1,44 @@
+name: Github Actions Task
+on: [push, workflow_dispatch]
+jobs:
+    lint_test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v3
+            - name: Install Node
+              uses: actions/setup-node@v3
+              with:
+                node-version: '18'
+            - name: Lint Code
+              run: |
+                echo "Linting Start..."
+                npm lint            
+            - name: Linting Completed
+              run: echo "Linting Completed..."
+            - name: Install Dependencies
+              run: npm ci
+            - name: Build code
+              run: npm run build
+            - name: Run Tests
+              run: |
+                echo "testing started..."
+                npm run test
+                echo "tests completed successfully"
+    deploy:
+        needs: lint_test
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v3
+            - name: Install Node
+              uses: actions/setup-node@v3
+              with:
+                node-version: '18'
+            - name: Install Dependencies
+              run: npm ci
+            - name: Build code
+              run: npm run build
+            - name: Deploying code
+              run: echo "Deployed code successfully..."
+    
