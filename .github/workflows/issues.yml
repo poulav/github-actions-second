@@ -1,0 +1,9 @@
+name: Trigger Workflow on Issues
+on: [issues, workflow_dispatch]
+jobs:
+    info:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Output Github event
+              run: echo "${{ toJSON(github) }}"
+
