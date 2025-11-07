@@ -10,14 +10,14 @@ jobs:
               uses: actions/setup-node@v3
               with:
                 node-version: '18'
+            - name: Install Dependencies
+              run: npm ci
             - name: Lint Code
               run: |
                 echo "Linting Start..."
                 npm lint            
             - name: Linting Completed
               run: echo "Linting Completed..."
-            - name: Install Dependencies
-              run: npm ci
             - name: Build code
               run: npm run build
             - name: Run Tests
