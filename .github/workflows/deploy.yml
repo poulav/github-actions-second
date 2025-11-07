@@ -1,4 +1,4 @@
-name: Github Actions Task
+name: Lint-Build-Test-Deploy Code
 on: [push, workflow_dispatch]
 jobs:
     lint_test:
